@@ -1,0 +1,8 @@
+.impeccable
+.claude
+scripts
+node_modules
+dist
+.vercel
+.env*
+PRODUCT.md

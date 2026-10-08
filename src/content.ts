@@ -1,0 +1,115 @@
+import "@fontsource/outfit/500.css";
+import "@fontsource/outfit/800.css";
+import type { Site } from "./lib";
+
+export const SITE: Site = {
+  name: "The South Trails",
+  sub: { en: "South Indian kitchen · Signature Signum 36, Sohna", hi: "साउथ इंडियन किचन · सिग्नेचर सिग्नम 36, सोहना" },
+  banner: { en: "Dosa at home? They deliver", hi: "घर पर डोसा? डिलीवरी भी होती है" },
+  phone: "919220338897",
+  phoneDisplay: "+91 92203 38897",
+  lat: 28.2875955,
+  lon: 77.065392,
+  hours: [[9, 23], [8, 23], [8, 23], [8, 23], [8, 23], [9, 22.5], [9, 23]],
+  price: { en: "Under ₹200 per person", hi: "₹200 से कम प्रति व्यक्ति" },
+  theme: {
+    dark: true,
+    bg: "#05110d",
+    bg2: "#0a1913",
+    panel: "#0e2019",
+    ink: "#eef6ee",
+    ink2: "#bccdbf",
+    ink3: "#7b9285",
+    line: "#1a3328",
+    accent: "#8fe07a",
+    onAccent: "#0a2200",
+    display: "Outfit",
+    weight: 800,
+    upper: false,
+  },
+  scene: "pour",
+  align: "right",
+  hero: {
+    title: [
+      { en: "Crispy dosa,", hi: "करारा डोसा," },
+      { en: "sambhar that tastes like home.", hi: "घर जैसा सांभर।" },
+    ],
+    proof: {
+      en: "4.8 on Google from 78 reviews. Masala dosa, idli, sambhar and lemon rice, at Signature Signum 36, Sector 36, Sohna.",
+      hi: "गूगल पर 78 रिव्यू से 4.8। मसाला डोसा, इडली, सांभर और लेमन राइस, सिग्नेचर सिग्नम 36, सेक्टर 36, सोहना में।",
+    },
+    fallback: "/img/p4.jpg",
+  },
+  marquee: ["Masala Dosa", "Idli", "Sambhar", "Lemon Rice", "Vada", "Coconut Chutney", "Filter Coffee"],
+  dishes: {
+    title: { en: "The plates Sohna orders", hi: "सोहना क्या मंगाता है" },
+    body: { en: "Every line is a real Google review.", hi: "हर लाइन असली गूगल रिव्यू है।" },
+    layout: "cards",
+    items: [
+      { name: { en: "Masala Dosa", hi: "मसाला डोसा" }, quote: "Had masala dosa here. It was the best dosa ever served in sohna. Must try..!!!", img: "/img/p8.jpg" },
+      { name: { en: "Lemon Rice", hi: "लेमन राइस" }, quote: "Good food. Lemon rice is authentic", img: "/img/p4.jpg" },
+      { name: { en: "Sambhar", hi: "सांभर" }, quote: "Sambhar is awesome .. I have ordered many time from here now." },
+      { name: { en: "Dosa & Idli", hi: "डोसा और इडली" }, quote: "Great place for South Indian options. Really love the crispy masala dosa and idlis." },
+    ],
+  },
+  gallery: { title: { en: "", hi: "" }, layout: "strip", photos: [] },
+  feature: {
+    kind: "counter",
+    title: { en: "Why Sohna keeps ordering", hi: "सोहना बार-बार क्यों मंगाता है" },
+    body: { en: "Small shop, big reviews. In guests' own words.", hi: "छोटी दुकान, बड़े रिव्यू। मेहमानों के अपने शब्दों में।" },
+    img: "/img/p5.jpg",
+    items: [
+      { label: { en: "Like home", hi: "घर जैसा" }, quote: "Taste like home made." },
+      { label: { en: "The owner", hi: "मालिक" }, quote: "I had masala dosa here and it was delicious ngl and the owner was very sweet🦋" },
+      { label: { en: "Delivered home", hi: "घर पर डिलीवरी" }, quote: "Very tasty and freshly cooked food. Service is good, packing is very nice and surely a recommended place to order South Indian food." },
+      { label: { en: "A light meal", hi: "हल्का खाना" }, quote: "Authentic south indian flavours with crispy dosas. Quick service and perfect for a light, taste meal!" },
+    ],
+  },
+  reviews: {
+    title: { en: "73 of 78 reviews are five stars", hi: "78 में से 73 रिव्यू पांच स्टार" },
+    rating: 4.8,
+    dist: [73, 1, 0, 1, 3],
+    quotes: [
+      { quote: "The food was really good and delicious. This type of quality food can't be found in sohna.", stars: 5 },
+      { quote: "Very good, authentic, tasty south indian food, do give it a try", stars: 5 },
+      { quote: "Delicious food and excellent service! The price is also affordable….", stars: 5 },
+    ],
+  },
+  visit: {
+    title: { en: "Lower ground, Signum 36", hi: "लोअर ग्राउंड, सिग्नम 36" },
+    img: "/img/p1.jpg",
+    alt: "The South Trails shopfront",
+    address: { en: "Shop 26A, lower ground, Signature Signum 36, Sector 36, Sohna", hi: "शॉप 26A, लोअर ग्राउंड, सिग्नेचर सिग्नम 36, सेक्टर 36, सोहना" },
+    note: { en: "Opens 8am Mon to Thu, 9am Fri to Sun.", hi: "सोम से गुरु सुबह 8 बजे, शुक्र से रवि सुबह 9 बजे खुलता है।" },
+  },
+  pour: { from: "pan", into: "kadhai", liquid: "#b4521f", foam: "#d9803f", thick: 1.6, hot: true },
+  story: [
+    { kicker: { en: "The dosa", hi: "डोसा" }, title: { en: "The best dosa in Sohna.", hi: "सोहना का सबसे अच्छा डोसा।" }, quote: "Had masala dosa here. It was the best dosa ever served in sohna. Must try..!!!" },
+    { kicker: { en: "The sambhar", hi: "सांभर" }, title: { en: "Ordered many times.", hi: "कई बार मंगाया।" }, quote: "Sambhar is awesome .. I have ordered many time from here now." },
+    { kicker: { en: "The taste", hi: "स्वाद" }, title: { en: "Like home.", hi: "घर जैसा।" }, quote: "Taste like home made." },
+  ],
+  build: {
+    title: { en: "Build your order in a few taps", hi: "कुछ टैप में अपना ऑर्डर बनाइए" },
+    body: { en: "Tap what you want, set how many and when. It goes to WhatsApp exactly as you see it.", hi: "जो चाहिए टैप करें, कितने लोग और कब, चुनें। मैसेज व्हाट्सऐप पर ठीक ऐसे ही जाएगा।" },
+    pick: { label: { en: "Order", hi: "ऑर्डर" }, options: [
+      { name: { en: "Delivery", hi: "डिलीवरी" } },
+      { name: { en: "Pickup", hi: "पिकअप" } },
+      { name: { en: "Dine-in", hi: "बैठकर खाना" } },
+    ] },
+    items: [
+      { en: "Masala Dosa", hi: "मसाला डोसा" },
+      { en: "Idli", hi: "इडली" },
+      { en: "Vada", hi: "वड़ा" },
+      { en: "Lemon Rice", hi: "लेमन राइस" },
+      { en: "Extra Sambhar", hi: "एक्स्ट्रा सांभर" },
+    ],
+    people: true,
+    when: true,
+    hello: { en: "Hi The South Trails, I'd like:", hi: "नमस्ते द साउथ ट्रेल्स, मुझे चाहिए:" },
+  },
+  waHello: {
+    en: "Hi The South Trails, I'd like to order. Items: , delivery / pickup: , address: ",
+    hi: "नमस्ते द साउथ ट्रेल्स, मुझे ऑर्डर देना है। आइटम: , डिलीवरी / पिकअप: , पता: ",
+  },
+  order: ["build", "dishes", "feature", "reviews", "visit"],
+};
