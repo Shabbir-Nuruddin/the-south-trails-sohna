@@ -1,6 +1,6 @@
 export type Lang = "en" | "hi";
 export type Bi = { en: string; hi: string };
-export type SceneKey = "salt" | "lanterns" | "tandoor" | "imarti" | "samosa" | "handi" | "chulha" | "road" | "cup" | "thali" | "celebration" | "pour";
+export type SceneKey = "salt" | "lanterns" | "tandoor" | "imarti" | "samosa" | "handi" | "chulha" | "road" | "cup" | "thali" | "celebration" | "pour" | "feast";
 export type SectionKey = "dishes" | "gallery" | "feature" | "reviews" | "visit" | "build";
 /** Opening hours per weekday, Sunday first, as [open, close] in decimal hours. Close may pass 24 (1 AM = 25). */
 export type Hours = [number, number][];

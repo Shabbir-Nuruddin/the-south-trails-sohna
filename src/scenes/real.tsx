@@ -57,7 +57,7 @@ export function useNode(model: string, name?: string) {
 }
 
 /** The restaurant's own photo as the room behind the table, softened like a shallow depth of field. */
-export function Backdrop({ src, progress }: { src: string; progress: SceneProps["progress"] }) {
+export function Backdrop({ src, progress, blur = 3, lum = 0.62 }: { src: string; progress: SceneProps["progress"]; blur?: number; lum?: number }) {
   const img = useLoader(THREE.ImageLoader, src);
   const tex = useMemo(() => {
     const w = 900;
@@ -66,12 +66,12 @@ export function Backdrop({ src, progress }: { src: string; progress: SceneProps[
     c.width = w;
     c.height = h;
     const g = c.getContext("2d")!;
-    g.filter = "blur(3px)";
+    g.filter = `blur(${blur}px)`;
     g.drawImage(img, -8, -8, w + 16, h + 16);
     const t = new THREE.CanvasTexture(c);
     t.colorSpace = THREE.SRGBColorSpace;
     return t;
-  }, [img]);
+  }, [img, blur]);
   const mesh = useRef<THREE.Mesh>(null);
   const mat = useRef<THREE.MeshBasicMaterial>(null);
   const { camera, size } = useThree();
@@ -86,7 +86,7 @@ export function Backdrop({ src, progress }: { src: string; progress: SceneProps[
     const h = Math.max(vh, vw / aspect);
     mesh.current.scale.set(h * aspect, h, 1);
     const p = progress.get();
-    mat.current.color.setScalar(0.62 - smooth(0.1, 0.9, p) * 0.3);
+    mat.current.color.setScalar(lum - smooth(0.1, 0.9, p) * lum * 0.45);
   });
   return (
     <mesh ref={mesh} position={[0, 0.55, -3.2]}>
@@ -96,7 +96,7 @@ export function Backdrop({ src, progress }: { src: string; progress: SceneProps[
   );
 }
 
-export function Table({ lite }: { lite: boolean }) {
+export function Table({ lite, mix = 1.6, env = 0.8, rough: gloss = 0.55 }: { lite: boolean; mix?: number; env?: number; rough?: number }) {
   const [map, rough, nor] = useTexture(["/tex/walnut_diff.webp", "/tex/walnut_rough.webp", "/tex/walnut_nor.webp"]);
   useMemo(() => {
     [map, rough, nor].forEach((t) => {
@@ -119,18 +119,18 @@ export function Table({ lite }: { lite: boolean }) {
             normalMap={nor}
             normalScale={new THREE.Vector2(0.4, 0.4)}
             color="#8a7a70"
-            roughness={0.55}
+            roughness={gloss}
             metalness={0}
             blur={[400, 120]}
             resolution={1024}
             mixBlur={1}
-            mixStrength={1.6}
+            mixStrength={mix}
             mixContrast={1}
             depthScale={0.6}
             minDepthThreshold={0.4}
             maxDepthThreshold={1.2}
             mirror={0}
-            envMapIntensity={0.8}
+            envMapIntensity={env}
           />
         )}
       </mesh>

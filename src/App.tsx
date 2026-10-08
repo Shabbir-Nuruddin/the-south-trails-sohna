@@ -149,19 +149,19 @@ export default function App() {
               </Suspense>
             </SceneBoundary>
           </div>
-          <div className="pointer-events-none absolute inset-0 bg-bg/50" />
+          <div className={`pointer-events-none absolute inset-0 ${SITE.scene === "feast" ? "bg-bg/15" : "bg-bg/50"}`} />
           <div className={`grain pointer-events-none absolute inset-0 mix-blend-overlay ${photo ? "opacity-40" : "opacity-70"}`} />
 
           <motion.div
             style={reduced ? undefined : { opacity: copyOpacity, y: copyY }}
-            className={`pointer-events-none relative mx-auto flex h-full max-w-[1400px] flex-col justify-end px-4 pb-28 sm:px-8 md:justify-center md:pb-0 md:pt-24 ${right ? "md:items-end md:text-right" : ""}`}
+            className={`pointer-events-none relative mx-auto flex h-full max-w-[1400px] [text-shadow:0_2px_20px_rgb(0_0_0/0.6)] flex-col justify-end px-4 pb-28 sm:px-8 md:justify-center md:pb-0 md:pt-24 ${right ? "md:items-end md:text-right" : ""}`}
           >
-            <div className="pointer-events-auto max-w-[600px]">
-              <motion.p {...enter(0)} className={`mb-5 inline-flex items-center gap-2.5 rounded-full border border-line bg-bg/75 px-3.5 py-1.5 text-[14px] text-ink-2 backdrop-blur-sm`}>
+            <div className={`pointer-events-auto max-w-[600px] ${SITE.scene === "feast" ? "max-md:rounded-2xl max-md:bg-bg/90 max-md:p-5 max-md:[text-shadow:none]" : ""}`}>
+              <motion.p {...enter(0)} className={`mb-5 ${SITE.scene === "feast" ? "max-md:mb-3" : ""} inline-flex items-center gap-2.5 rounded-full border border-line bg-bg/75 px-3.5 py-1.5 text-[14px] text-ink-2 backdrop-blur-sm`}>
                 <span className={`live-dot relative inline-block h-2 w-2 rounded-full ${state.open ? "bg-[#3ddc84] text-[#3ddc84]" : "bg-ink-3 text-ink-3"}`} />
                 {SITE.hours.every((h) => h[0] === 0 && h[1] === 24) ? t.allday : state.open ? t.open(fmtHour(state.at)) : t.closed(fmtHour(state.at))}
               </motion.p>
-              <h1 className="font-display text-[clamp(2.9rem,7.4vw,6.2rem)] leading-[0.92] tracking-[-0.02em] text-balance">
+              <h1 className={`font-display ${SITE.scene === "feast" ? "text-[clamp(2.3rem,7.4vw,6.2rem)]" : "text-[clamp(2.9rem,7.4vw,6.2rem)]"} leading-[0.92] tracking-[-0.02em] text-balance`}>
                 <motion.span {...enter(0.08)} className="block">
                   {bi(SITE.hero.title[0], lang)}
                 </motion.span>
@@ -169,10 +169,10 @@ export default function App() {
                   {bi(SITE.hero.title[1], lang)}
                 </motion.span>
               </h1>
-              <motion.p {...enter(0.3)} className={`mt-6 max-w-[44ch] text-[18px] leading-relaxed text-ink-2 ${right ? "md:ml-auto" : ""}`}>
+              <motion.p {...enter(0.3)} className={`mt-6 max-w-[44ch] ${SITE.scene === "feast" ? "max-md:mt-3 max-md:text-[15px]" : ""} text-[18px] leading-relaxed text-ink-2 ${right ? "md:ml-auto" : ""}`}>
                 {bi(SITE.hero.proof, lang)}
               </motion.p>
-              <motion.div {...enter(0.4)} className={`mt-8 flex flex-wrap gap-3 ${right ? "md:justify-end" : ""}`}>
+              <motion.div {...enter(0.4)} className={`${SITE.scene === "feast" ? "mt-5 md:mt-8" : "mt-8"} flex flex-wrap gap-3 ${right ? "md:justify-end" : ""}`}>
                 <CallButton label={t.call} />
                 <WaButton label={t.whatsapp} text={wa} />
                 <DirectionsButton label={t.directions} className="hidden sm:inline-flex" />
@@ -194,7 +194,7 @@ export default function App() {
           )}
 
           <motion.div style={{ opacity: cueOpacity }} className="pointer-events-none absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-[12px] tracking-[0.2em] text-ink-3 md:flex">
-            {(SITE.pour ? t.scrollPour : t.scroll).toUpperCase()}
+            {(SITE.pour && SITE.scene !== "feast" ? t.scrollPour : t.scroll).toUpperCase()}
             <span className="block h-10 w-px overflow-hidden bg-line">
               <motion.span className="block h-1/2 w-full bg-accent" animate={reduced ? undefined : { y: ["-100%", "200%"] }} transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }} />
             </span>

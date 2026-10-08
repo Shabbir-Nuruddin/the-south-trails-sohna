@@ -30,7 +30,7 @@ const lerpY = (pts: [number, number][]) => (y: number) => {
   }
   return pts[pts.length - 1][1];
 };
-const VESSELS: Record<Pour["into"], Vessel> = {
+export const VESSELS: Record<Pour["into"], Vessel> = {
   glass: { top: 0.115, base: 0.012, r: lerpY([[0.012, 0.0305], [0.115, 0.0375]]), fill: [0.03, 0.094], land: 0.004, cam: 0.95, inset: 0.0006 },
   kulhad: { top: 0.085, base: 0.008, r: lerpY([[0.008, 0.022], [0.03, 0.028], [0.07, 0.0325], [0.085, 0.0335]]), fill: [0.024, 0.072], land: 0.003, cam: 0.9, inset: 0.0006 },
   kadhai: { top: 0.108, base: 0.012, r: lerpY([[0.012, 0.118], [0.04, 0.13], [0.108, 0.145]]), fill: [0.032, 0.084], land: 0.03, cam: 1.9, inset: 0.004 },
@@ -361,7 +361,7 @@ function Glass({ lite }: { lite: boolean }) {
   );
 }
 
-function Kulhad() {
+export function Kulhad() {
   const geo = useMemo(
     () => lathe([[0, 0], [0.024, 0], [0.026, 0.004], [0.031, 0.03], [0.036, 0.07], [0.0372, 0.084], [0.0352, 0.086], [0.0335, 0.085], [0.0325, 0.07], [0.028, 0.03], [0.022, 0.008], [0, 0.008]], 72),
     [],
@@ -384,7 +384,7 @@ function Kulhad() {
   );
 }
 
-function Kadhai() {
+export function Kadhai() {
   const node = useNode("brass_pot_02");
   const o = useMemo(() => prep(node, [], 0, 0), [node]);
   return <primitive object={o} />;
